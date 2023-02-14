@@ -1,0 +1,35 @@
+version: "3.6"
+
+services:
+  grupomas-dbservice:
+    build:
+      context: ./
+      dockerfile: Dockerfile-mysql
+    platform: linux/amd64
+    container_name: grupomasdb
+    ports:
+      - "3321:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: grupomas
+      MYSQL_USER: grupomas
+      MYSQL_PASSWORD: password
+    volumes:
+      - "../../mysqlservice/databases:/var/lib/mysql"
+      - "../../mysqlservice/sql-scripts:/docker-entrypoint-initdb.d"
+      - "../restore:/restore"
+  grupomas-9:
+    container_name: grupomas
+    build:
+      context: ./
+      dockerfile: Dockerfile-laravel
+    platform: linux/amd64
+    ports:
+      - "8080:80"
+    volumes:
+      - "../etc/php7:/etc/apache2/sites-available/"
+      - "../etc/apachephp7:/etc/apache2/sites-enabled/"
+      - "../etc/run:/usr/local/bin/run/"
+      - "../../:/var/www/"
+    links:
+      - grupomas-dbservice
