@@ -41,6 +41,11 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+        'vehicleAPI' => [
+            'driver' => 'local',
+            'root' => storage_path('app/vehicleAPI'),
+            'visibility' => 'private',
+        ],
 
         's3' => [
             'driver' => 's3',
