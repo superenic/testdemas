@@ -24,6 +24,11 @@ class CrearEvento extends Migration
             BEGIN
                 INSERT INTO eventos(nombre, descripcion) VALUES(nombre_in, descripcion_in);
             END;
+            DROP PROCEDURE IF  EXISTS vw_reporte;
+            create view vw_reporte as
+                select mf.Make_Name
+                from ManufactureMake mf
+                inner join make mk on mk.Make_ID=mf.Make_ID ;
             ';
             db::unprepared($sentence);
         });

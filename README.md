@@ -11,6 +11,18 @@
 6.  [] Realizar filtros opcionales por cualquiera de los campos definidos y combinaciones entre ellos.
 7.  [] Enviar reporte por correo electrónico (PHPMailer, SES o cualquier otra librería que prefiera).
 8.  [] Guardar el reporte en AWS-S3.
-9.  [] Generar métricas de rendimiento.
+9.  [x] Generar métricas de rendimiento.
 10. [] Proponer una funcionalidad más.
     1. [] nueva
+
+
+
+```bash
+php artisan config:clear
+
+php artisan cache:clear
+
+sudo chmod -R 775 /var/www/your_folder
+
+sudo chown -R www-data:www-data var/www/your_folder 
+``
