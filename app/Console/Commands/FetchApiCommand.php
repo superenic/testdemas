@@ -61,11 +61,11 @@ class FetchApiCommand extends Command
             make::fetch();
             WmiManufacture::fetch();
             DecodeVin::fetchFlat();
-            WMI::fetchFlat();
             DecodeVin::fetch();
             Part::fetch();
             Manufacture::fetch();
             ManufactureDetail::fetch();
+            WMI::fetch();
             ManufactureMake::fetch();
             $this->info('Termine de cargar los datos de la API');
             $evento = new Evento();

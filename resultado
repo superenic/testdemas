@@ -1,0 +1,22 @@
+cargando... 
+
+   ErrorException 
+
+  Undefined array key "id"
+
+  at app/Models/WmiManufacture.php:36
+     32▕         );
+     33▕         $respuesta = json_decode($response->getBody(), true);
+     34▕         $results = $respuesta["Results"];
+     35▕         array_map(function($item) {
+  ➜  36▕             $item['identificador'] = $item['id'];
+     37▕             unset($item['id']);
+     38▕ 
+     39▕             return $item;
+     40▕         }, $results);
+
+  1   app/Models/WmiManufacture.php:36
+      Illuminate\Foundation\Bootstrap\HandleExceptions::handleError("Undefined array key "id"", "/var/www/app/Models/WmiManufacture.php")
+
+  2   [internal]:0
+      App\Models\WmiManufacture::App\Models\{closure}()

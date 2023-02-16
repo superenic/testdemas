@@ -10,7 +10,7 @@
     1. [] vehicle type
 6.  [] Realizar filtros opcionales por cualquiera de los campos definidos y combinaciones entre ellos.
 7.  [] Enviar reporte por correo electrónico (PHPMailer, SES o cualquier otra librería que prefiera).
-8.  [] Guardar el reporte en AWS-S3.
+8.  [x] Guardar el reporte en AWS-S3.
 9.  [x] Generar métricas de rendimiento.
 10. [] Proponer una funcionalidad más.
     1. [] nueva
