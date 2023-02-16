@@ -2,7 +2,7 @@
 
 1.  [x] Llamados al API https://vpic.nhtsa.dot.gov/api/.
 2.  [x] Almacenar la información en una base de datos (Definir el modelo).
-3.  [] Considerar control de usuarios y bitácoras de eventos.
+3.  [1/2] Considerar control de usuarios y bitácoras de eventos.
 4.  [1/2] Utilizar procedimientos almacenados y vistas.
 5.  [] Generar un reporte de Excel con los siguientes campos:
     1. [] make
@@ -16,6 +16,8 @@
     1. [] nueva
 
 
+composer require maatwebsite/excel:*
+composer require laravelcollective/html:*
 
 ```bash
 php artisan config:clear
@@ -26,3 +28,5 @@ sudo chmod -R 775 /var/www/your_folder
 
 sudo chown -R www-data:www-data var/www/your_folder 
 ``
+
+https://docs.laravel-excel.com/3.1/getting-started/installation.html
