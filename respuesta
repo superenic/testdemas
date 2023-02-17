@@ -1,0 +1,22 @@
+
+   Error 
+
+  Object of class stdClass could not be converted to string
+
+  at vendor/laravel/framework/src/Illuminate/Support/Str.php:617
+    613▕ 
+    614▕         $result = array_shift($segments);
+    615▕ 
+    616▕         foreach ($segments as $segment) {
+  ➜ 617▕             $result .= (array_shift($replace) ?? $search).$segment;
+    618▕         }
+    619▕ 
+    620▕         return $result;
+    621▕     }
+
+      [2m+11 vendor frames [22m
+  12  app/Models/DecodeVin.php:28
+      Illuminate\Database\Eloquent\Model::__callStatic("insert")
+
+  13  app/Console/Commands/FetchApiCommand.php:44
+      App\Models\DecodeVin::fetch()
