@@ -19,6 +19,7 @@ class CrearEvento extends Migration
             $table->timestamps();
             $table->string('nombre', 50)->nullable();
             $table->string('descripcion', 250)->nullable();
+            $table->bigInteger('userId')->unsigned()->nullable()->default(null);
             $sentence = 'DROP PROCEDURE IF  EXISTS crear_evento;
             CREATE PROCEDURE crear_evento (IN nombre_in varchar(50), IN descripcion_in VARCHAR(250))
             BEGIN

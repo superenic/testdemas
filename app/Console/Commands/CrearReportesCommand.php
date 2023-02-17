@@ -17,7 +17,7 @@ use Illuminate\Console\Command;
 use App\Models\ManufactureDetail;
 use Maatwebsite\Excel\Facades\Excel;
 
-class CrearReportesCommand extends Command
+class CrearReportesCommand extends CommandDecorator
 {
     /**
      * The name and signature of the console command.
@@ -52,6 +52,7 @@ class CrearReportesCommand extends Command
      */
     public function handle()
     {
+        $user = User::inicioSesionPorComando();
         $opciones = ['vehicleAPI', 's3'];
         $almacen = $this->anticipate('En donde lo quieres guardar?', $opciones)??'vehicleAPI';
         if ($almacen == 'local') $almacen = 'vehicleAPI';

@@ -14,7 +14,7 @@ use App\service\VehicleService;
 use Illuminate\Console\Command;
 use App\Models\ManufactureDetail;
 
-class FetchApiCommand extends Command
+class FetchApiCommand extends CommandDecorator
 {
     const ROOT_URL = "https://vpic.nhtsa.dot.gov/api/";
 
@@ -52,12 +52,8 @@ class FetchApiCommand extends Command
      */
     public function handle()
     {
-        $evento = new Evento();
-        $evento->nombre = 'cargar FetchApiCommand';
-        $evento->descripcion = 'Se ha ejecutado FetchApiCommand';
-        $evento->save();
         if ($this->confirm('cargar informacion de la API?')) {
-            $this->info('Se esta cargado los datos la API');
+            $this->info('Se solicito informacion de la API');
             make::fetch();
             WmiManufacture::fetch();
             DecodeVin::fetchFlat();
@@ -68,10 +64,6 @@ class FetchApiCommand extends Command
             WMI::fetch();
             ManufactureMake::fetch();
             $this->info('Termine de cargar los datos de la API');
-            $evento = new Evento();
-            $evento->nombre = 'Se solicito a la API';
-            $evento->descripcion = 'Se ha ejecutado FetchApiCommand y cargado la informacion de la API';
-            $evento->save();
         }
 
         return 0;
