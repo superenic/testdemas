@@ -19,12 +19,12 @@ class CrearEvento extends Migration
             $table->timestamps();
             $table->string('nombre', 50)->nullable();
             $table->string('descripcion', 250)->nullable();
-            $sentence = 'DROP PROCEDURE IF  EXISTS crear_evento;
+            $table->bigInteger('userId')->unsigned()->nullable()->default(null);
+            $sentence = '
             CREATE PROCEDURE crear_evento (IN nombre_in varchar(50), IN descripcion_in VARCHAR(250))
             BEGIN
                 INSERT INTO eventos(nombre, descripcion) VALUES(nombre_in, descripcion_in);
             END;
-            DROP PROCEDURE IF  EXISTS vw_reporte;
             create view vw_reporte as
                 select mf.Make_Name
                 from ManufactureMake mf
@@ -42,5 +42,7 @@ class CrearEvento extends Migration
     public function down()
     {
         Schema::dropIfExists(Evento::TABLE_NAME);
+        Schema::dropIfExists('crear_evento');
+        Schema::dropIfExists('vw_reporte');
     }
 }

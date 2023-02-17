@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\UsersExport;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/info', function () {
+    echo phpinfo();
+});
+Route::get('/excel', function () {
+    return Excel::download(new UsersExport(2019), 'users.xlsx');
 });

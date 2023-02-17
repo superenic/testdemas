@@ -11,7 +11,10 @@ class WMI extends Model
 {
     use HasFactory;
 
-    public static function fetchFlat()
+    const TABLE_NAME = 'wmi';
+    protected $table = self::TABLE_NAME;
+
+    public static function fetch()
     {
         $service = new VehicleService();
         $response = $service->getResponse(
@@ -19,6 +22,6 @@ class WMI extends Model
         );
         $respuesta = json_decode($response->getBody(), true);
         $results = $respuesta["Results"];
-        Storage::disk('vehicleAPI')->put('wmi.json', json_encode($results));
+        self::insert($results);
     }
 }
